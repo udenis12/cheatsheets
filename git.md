@@ -84,6 +84,8 @@ Check SSH connection to github:
 ```bash
 # Check if ssh agent is running
 # Change startup type of OpenSSH auth service to manual
+Get-Service -Name ssh-agent | Set-Service -StartupType Manual
+Start-Service ssh-agent
 ssh-agent -s
 ssh-add C:\Users\User/.ssh/id_rsa
 
