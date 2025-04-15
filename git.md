@@ -90,6 +90,9 @@ ssh-add C:\Users\User/.ssh/id_github
 
 # Check connection
 ssh -T git@gitub.com
+
+# Assign private key
+git config --add --local core.sshCommand 'ssh -i ~/.ssh/id_github' 
 ```
 To assign private key to git add lines to `/.ssh/config>`:
 ```bash
