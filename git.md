@@ -76,9 +76,9 @@ Generate SSH public and private keys:
 ssh-keygen -t rsa -b 4096
 
 # View public key
-cat ~/.ssh/id_rsa.pub
+cat ~/.ssh/id_github | clip
 ```
-Put generated key to github [profile](https://github.com/settings/keys). 
+Put generated public key to github [profile](https://github.com/settings/keys). 
 
 Check SSH connection to github:
 ```bash
@@ -86,12 +86,18 @@ Check SSH connection to github:
 # Change startup type of OpenSSH auth service to manual
 Get-Service -Name ssh-agent | Set-Service -StartupType Manual
 Start-Service ssh-agent
-ssh-agent -s
-ssh-add C:\Users\User/.ssh/id_rsa
+ssh-add C:\Users\User/.ssh/id_github
 
 # Check connection
 ssh -T git@gitub.com
 ```
+To assign private key to git add lines to `/.ssh/config>`:
+```bash
+Host github.com
+ HostName github.com
+ IdentityFile ~/.ssh/id_github
+```
+
 ## Branching
 ```bash
 # Add new branch
