@@ -25,6 +25,9 @@ VALUES (NULL, "Белая гвардия", "Булгаков М.А.", 540.50, 5)
 
 ### 
 ```sql
+SELECT col
+FROM tab
+WHERE col > 5;
 ```
 
 ### 
