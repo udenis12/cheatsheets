@@ -8,7 +8,7 @@
 ## Install on local machine
 Download git client from  [git-scm.com](https://git-scm.com/downloads).
 
-List of configuratiom commands:
+List of configuration commands:
 
 ```bash
 # Configuration of local git
