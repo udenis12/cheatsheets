@@ -13,7 +13,16 @@ CREATE TABLE book (
 );
 ```
 
+value TYPE ``NOT NULL`` - row can`t contain NULL values
+
 Insert new rows
+```sql
+INSERT INTO book (title, author, price, amount)
+VALUES ("Белая гвардия", "Булгаков М.А.", 540.50, 5),
+        ("Идиот", "Достоевский Ф.М.", 460.00, 10),
+        ("Братья Карамазовы", "Достоевский Ф.М.", 799.01, 2);
+```
+
 ```sql
 INSERT INTO book 
 VALUES (NULL, "Белая гвардия", "Булгаков М.А.", 540.50, 5),
@@ -365,10 +374,31 @@ WHERE (f.name, f.number_plate, f.violation, f.date_violation)
     = (p.name, p.number_plate, p.violation, p.date_violation);
 ```
 
+## Joins
+Single  ->  Many
 
+Many    <-> Many
+
+Reference to another table
 ```sql
+CREATE TABLE book ( 
+    book_id INT PRIMARY KEY AUTO_INCREMENT,
+    title VARCHAR(50),
+    author_id INT NOT NULL,
+    genre_id INT,
+    price DECIMAL(8, 2),
+    amount INT,
+    FOREIGN KEY (author_id) REFERENCES author (author_id),
+    FOREIGN KEY (genre_id) REFERENCES genre (genre_id)
+);
 ```
-
+Actions with foreign key on primary key delete:
+|Parametr |	Description|
+|:---------------:|----------|
+| CASCADE | Automatically deletes rows from the dependent table when deleting linked rows in the main table. |
+| SET NULL | Sets the foreign key column to NULL when deleting a linked row from the master table. (In this case, the foreign key column must support setting NULL) |
+| SET DEFAULT | Similar to SET NULL except that the foreign key value is not set to NULL, but to the default value for that column. |
+| RESTRICT | Rejects the deletion of rows in the master table if there are related rows in the dependent table. |
 
 ```sql
 ```
